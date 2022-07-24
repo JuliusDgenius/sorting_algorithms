@@ -19,7 +19,7 @@ void print_left_right(int *array, int size, int first, int mid)
 	while (k < mid)
 	{
 		if (k != mid - 1)
-			printf(%d, ), array[k];
+			printf("%d, ", array[k]);
 		else
 			printf("%d\n", array[k]);
 		k++;
@@ -53,7 +53,7 @@ void merge(int *array, int size, int first, int mid, int *cpy)
 	print_left_right(array, size, first, mid);
 
 	i = first;
-	j mid;
+	j = mid;
 
 	printf("[Done]: ");
 	k = first;
@@ -61,13 +61,16 @@ void merge(int *array, int size, int first, int mid, int *cpy)
 	{
 		if (i < mid && (j >= size || array[i] <= array[j]))
 		{
+			cpy[k] = array[i];
+			i++;
+		}
+		else
+		{
 			cpy[k] = array[j];
 			j++;
 		}
 		if (k < size - 1)
 			printf("%d, ", cpy[k]);
-		else
-			printf("%d\n", cpy[k]);
 		k++;
 	}
 }
