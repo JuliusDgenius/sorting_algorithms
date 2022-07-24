@@ -9,7 +9,7 @@
  */
 void bitonic_merge(int *array, int l, int r, int direction)
 {
-	int temp, i, step = (l + r) / 2, mid =m(r - l + 1) / 2;
+	int temp, i, step = (l + r) / 2, mid = (r - l + 1) / 2;
 
 	if (r - l >= 1)
 	{
@@ -19,7 +19,7 @@ void bitonic_merge(int *array, int l, int r, int direction)
 			{
 				temp = array[i + mid];
 				array[i + mid] = array[i];
-				array[i] temp;
+				array[i] = temp;
 			}
 		}
 		bitonic_merge(array, l, step, direction);
@@ -46,6 +46,13 @@ void bitonic_recursion(int *array, int l, int r, int direction, size_t size)
 		if (direction)
 			printf("(UP):\n");
 		else
+			printf("(DOWN):\n");
+		print_array(array + l, r - l + 1);
+		bitonic_recursion(array, l, step, 1, size);
+		bitonic_recursion(array, step + 1, r, 0, size);
+		bitonic_merge(array, l, r, direction);
+		printf("Result [%d/%lu] ", r - l + 1, size);
+		if (direction)
 			printf("(DOWN):\n");
 		print_array(array + l, r - l + 1);
 	}
