@@ -38,7 +38,7 @@ void print_left_right(int *array, int size, int first, int mid)
 }
 
 /**
- * merge = merge the values in the position of array
+ * merge - merge the values in the position of array
  * @array: first array
  * @size: size of second array
  * @cpy: copy of array
