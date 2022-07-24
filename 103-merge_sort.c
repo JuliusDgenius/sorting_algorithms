@@ -123,6 +123,7 @@ void merge_sort(int *array, size_t size)
 
 	if (cpy == NULL)
 		return;
+
 	copy_array(array, cpy, size);
 
 	mergeSort(cpy, 0, size, array);
