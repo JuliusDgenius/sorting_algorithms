@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * count_sort - count sort with LSD
+ * count_sort_LSD - count sort with LSD
  * @array: the array to sort
  * @size: size of the array
  * @lsd: least significant digit

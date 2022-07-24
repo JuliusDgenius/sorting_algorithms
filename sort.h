@@ -36,5 +36,6 @@ void merge(int *array, int size, int first, int mid, int *cpy);
 void merge_sort(int *array, size_t size);
 void mergeSort(int *cpy, int first, int size, int *array);
 void heap_sort(int *array, size_t size);
+void radix_sort(int *array, size_t size);
 
 #endif
