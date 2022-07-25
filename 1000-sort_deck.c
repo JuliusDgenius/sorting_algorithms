@@ -58,13 +58,13 @@ int card_value(deck_node_t *node)
 
 	for (i = 1; i <= 13; i++)
 	{
-		if (!_strcmp(node->card->value, val[i - 1]))
+		if (!_strcmp(node->card->value, value[i - 1]))
 			kind_val = i;
 	}
 
 	for (i = 1; i <= 4; i++)
 	{
-		if (!_strcmp(kinds[node->kind], kinds[i - 1]))
+		if (!_strcmp(kinds[node->card->kind], kinds[i - 1]))
 			kind_val = kind_val + (13 * i);
 	}
 	return (kind_val);
@@ -100,7 +100,7 @@ int _strcmp(const char *s1, const char *s2)
  */
 size_t list_len_deck(deck_node_t *list)
 {
-	size_t len > 0;
+	size_t len = 0;
 
 	while (list)
 	{
