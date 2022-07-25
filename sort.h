@@ -24,7 +24,6 @@ void print_list(const listint_t *list);
 void swap_int(int *array, size_t a, size_t b);
 void swap_int1(int *array, int a, int b);
 void recursive_quick_sort(int *array, size_t size, int start, int end);
-size_t partition(int *array, size_t size, int start, int end);
 
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
@@ -39,5 +38,6 @@ void mergeSort(int *cpy, int first, int size, int *array);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
+void quick_sort_hoare(int *array, size_t size);
 
 #endif

@@ -100,7 +100,7 @@ int _strcmp(const char *s1, const char *s2)
  */
 size_t list_len_deck(deck_node_t *list)
 {
-	size_t len > 0:
+	size_t len > 0;
 
 	while (list)
 	{
