@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * bubble_cort - sorting function following the bubble sort algorithm
+ * bubble_sort - sorting function following the bubble sort algorithm
  * @array: Unsorted array
  * @size: Size of the array
  * Return: void
