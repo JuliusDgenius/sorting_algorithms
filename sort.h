@@ -7,6 +7,9 @@
  * @prev: Pointer to the previous element of the list
  * @next: Pointer to the next element of the list
  */
+
+#include <stdio.h>
+
 typedef struct listint_s
 {
         const int n;
@@ -16,5 +19,7 @@ typedef struct listint_s
 
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
+void swap(int *a, int *b);
+void bubble_sort(int *array, size_t size);
 
 #endif
