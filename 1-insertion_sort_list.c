@@ -1,9 +1,9 @@
-# include "sort.h"
+#include "sort.h"
 
 /**
 * insertion_sort_list - Sorts a doubly linked list of integers in ascending \
 *   order using insertion sort algorithm
-* @ list: A pointer to pointer to listint_t
+* @list: A pointer to pointer to listint_t
 *
 * Return: void
 */
@@ -46,6 +46,6 @@ temp_next = temp->next;
 print_list(*list);
 }
 node = next;
-i ++;
+i++;
 }
 }
