@@ -20,12 +20,12 @@ while (node != NULL)
 {
 temp = node;
 next = node->next;
-temp_next = temp->next;    / *It will be NULL for the last node * /
+temp_next = temp->next; /*It will be NULL for the last node */
 temp_prev = temp->prev;
 
 while (temp->prev != NULL && temp_prev->n > temp->n)
 {
-if (temp_next != NULL);
+if (temp_next != NULL)
 temp_next->prev = temp_prev;
 temp_prev->next = temp_next;
 if (temp_prev->prev == NULL)
