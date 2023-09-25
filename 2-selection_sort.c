@@ -1,12 +1,12 @@
 #include "sort.h"
 
 /**
- * swap - swaps values in an array
+ * swaps - swaps values in an array
  * @a: first integer
  * @b: second integer
  * Return: void
  */
-void swap(int *a, int *b)
+void swaps(int *a, int *b)
 {
 int tmp;
 tmp = *a;
@@ -35,7 +35,7 @@ void selection_sort(int *array, size_t size)
 		}
 		if (array[i] > array[k])
 		{
-			swap(&array[i], &array[k]);
+			swaps(&array[i], &array[k]);
 			print_array(array, size);
 		}
 	}
