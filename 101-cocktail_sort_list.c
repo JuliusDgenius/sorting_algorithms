@@ -45,12 +45,10 @@ if (list == NULL || !(*list) || (*list)->next == NULL)
 return;
 
 swapped = 1;
-
 while (swapped)
 {
 swapped = 0;
 tmp = *list;
-
 while (tmp->next)
 {
 next_node = tmp->next;
@@ -66,7 +64,6 @@ tmp = tmp->next;
 if (!swapped)
 break;
 swapped = 0;
-
 while (tmp->prev)
 {
 next_node = tmp->prev;
