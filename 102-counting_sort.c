@@ -14,13 +14,6 @@ int *output_array = malloc(sizeof(int) * size);
 size_t i;
 int max = 0;
 
-if (count_array == NULL || output_array == NULL)
-{
-free(count_array);
-free(output_array);
-return;
-}
-/* Need to find k */
 for (i = 0; i < size; i++)
 {
 if (array[i] > max)
@@ -44,4 +37,6 @@ for (i = 0; i < size; i++)
 {
 array[i] = output_array[i];
 }
+free(count_array);
+free(output_array);
 }
