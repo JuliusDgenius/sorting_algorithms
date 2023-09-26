@@ -10,42 +10,38 @@
  */
 void counting_sort(int *array, size_t size)
 {
-int *count_array, *output_array;
-size_t i;
-int max = 0;
+    int *count_arr, *out_arr, max, num, j, l;
+    size_t i, k, m, n;
 
-/* Find max value in array */
-for (i = 0; i < size; i++)
-{
-if (array[i] > max)
-max = array[i];
-}
+    if (size < 2)
+        return;
 
-/* Check size */
-if (max <= 0)
-return;
+    max = array[0];
+    for (i = 1; i < size; i++)
+        if (array[i] > max)
+            max = array[i];
 
-count_array = malloc(sizeof(int) * (max + 1));
-output_array = malloc(sizeof(int) * size);
+    count_arr = malloc(sizeof(size_t) * (max + 1));
+    out_arr = malloc(sizeof(int) * size);
 
-/* Initialize count_array with zeros */
-for (i = 0; (int)i <= max; i++)
-count_array[i] = 0;
-/* Count the occurrences of each number */
-for (i = 0; i < size; i++)
-count_array[array[i]]++;
-/* Calculate prefix sum */
-for (i = 1; (int)i <= max; i++)
-count_array[i] = count_array[i] + count_array[i - 1];
-print_array(count_array, max + 1);
-/* Buld the sorted output_array */
-for (i = size - 1; (int)i >= 0; i--)
-output_array[--count_array[array[i]]] = array[i];
-/* Copy the sorted array back to the original array */
-for (i = 0; i < size; i++)
-{
-array[i] = output_array[i];
-}
-free(count_array);
-free(output_array);
+    for (j = 0; j <= max; j++)
+        count_arr[j] = 0;
+    for (k = 0; k < size; k++)
+    {
+        num = array[k];
+        count_arr[num] += 1;
+    }
+    for (l = 1; l <= max; l++)
+        count_arr[l] += count_arr[l - 1];
+    print_array(count_arr, max + 1);
+    for (m = 0; m < size; m++)
+    {
+        out_arr[count_arr[array[m]] - 1] = array[m];
+        count_arr[array[m]]--;
+    }
+    for (n = 0; n < size; n++)
+        array[n] = out_arr[n];
+
+    free(count_arr);
+    free(out_arr);
 }
