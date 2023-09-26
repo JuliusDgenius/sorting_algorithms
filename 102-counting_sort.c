@@ -14,11 +14,16 @@ int *count_array, *output_array;
 size_t i;
 int max = 0;
 
+/* Find max value in array */
 for (i = 0; i < size; i++)
 {
 if (array[i] > max)
 max = array[i];
 }
+
+/* Check size */
+if (max <= 0)
+return;
 
 count_array = malloc(sizeof(int) * (max + 1));
 output_array = malloc(sizeof(int) * size);
@@ -28,7 +33,7 @@ for (i = 0; (int)i <= max; i++)
 count_array[i] = 0;
 /* Count the occurrences of each number */
 for (i = 0; i < size; i++)
-++count_array[array[i]];
+count_array[array[i]]++;
 /* Calculate prefix sum */
 for (i = 1; (int)i <= max; i++)
 count_array[i] = count_array[i] + count_array[i - 1];
