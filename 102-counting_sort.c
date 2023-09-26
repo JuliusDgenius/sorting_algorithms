@@ -10,8 +10,7 @@
  */
 void counting_sort(int *array, size_t size)
 {
-int *count_array = malloc(sizeof(int) * (size + 1));
-int *output_array = malloc(sizeof(int) * size);
+int *count_array, *output_array;
 size_t i;
 int max = 0;
 
@@ -20,6 +19,10 @@ for (i = 0; i < size; i++)
 if (array[i] > max)
 max = array[i];
 }
+
+count_array = malloc(sizeof(int) * (max + 1));
+output_array = malloc(sizeof(int) * size);
+
 /* Initialize count_array with zeros */
 for (i = 0; (int)i <= max; i++)
 count_array[i] = 0;
