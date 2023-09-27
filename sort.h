@@ -34,6 +34,9 @@ void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
-
+void print_left_and_right(int *array, int size, int lb, int mid);
+void merge(int *array, int size, int lb, int mid, int *cpy);
+void mergeSort(int *cpy, int lb, size_t size, int *array);
+void copy_array(int *array, int *cpy, int size);
 
 #endif
