@@ -1,81 +1,133 @@
 #include "sort.h"
 
 /**
+ * print_left_and_right - Prints left and right partition of the array
+ * @array: The array
+ * @size: Size of the second array
+ * @lb: lower bound of array
+ * @mid: midpoint of array
+ * Return: void
+ */
+void print_left_and_right(int *array, int size, int lb, int mid)
+{
+int k;
+
+printf("Merging...\n");
+printf("[left]: ");
+for (k = lb; k < mid; k++)
+{
+if (k != mid - 1)
+printf("%d, ", array[k]);
+else
+printf("%d\n", array[k]);
+}
+
+printf("[right]: ");
+k = mid;
+while (k < size)
+{
+if (k < size - 1)
+printf("%d, ", array[k]);
+else
+printf("%d\n", array[k]);
+k++;
+}
+}
+
+/**
  * merge - Divides an array two to apply to Merge sort algorithm.
  * @array: The array to sort
- * @size: Size of the array,
- * 
+ * @size: Size of the array
+ * @lb: lower bound of array
+ * @mid: midpoint of the array
+ * @cpy: copy of the array
+ *
  * Return: void
  *
  */
-void merge(int *array, size_t lb, size_t mid, size_t ub)
+void merge(int *array, int size, int lb, int mid, int *cpy)
 {
-size_t i, j, k;
-size_t n1 = mid - lb + 1;
-size_t n2 = ub - mid;
-/* Temporary arrays */
-int *left_subarray, *right_subarray;
+int i, j, k;
 
-left_subarray = malloc(sizeof(int) * n1);
-right_subarray = malloc(sizeof(int) * n2);
-/* copy data to temporary sub arrays */
-for (i = 0; i < n1; i++)
+/* Print left sub array */
+print_left_and_right(array, size, lb, mid);
+
+i = lb;
+j = mid;
+
+printf("[Done]: ");
+for (k = lb; k < size; k++)
 {
-left_subarray[i] = array[lb + i];
-}
-for (j = 0; j < n2; j++)
-right_subarray[j] = array[mid + 1 + j];
-/* Merge tmps back into array */
-i = 0;
-j = 0;
-k = lb;
-while (i < n1 && j < n2)
+if (i < mid && (j >= size || array[i] <= array[j]))
 {
-if (left_subarray[i] <= right_subarray[j])
-{
-array[k] = right_subarray[i];
+cpy[k] = array[i];
 i++;
 }
 else
 {
-array[k] = right_subarray[j];
+cpy[k] = array[j];
 j++;
 }
+if (k < size - 1)
+printf("%d, ", cpy[k]);
 k++;
 }
-/* Copy the remaining elements of left subarray */
-while (i < n1)
-{
-array[k] = left_subarray[i];
-i++;
-k++;
-}
-/* Copy the remaining elements of right subarray */
-while (j < n2)
-{
-array[k] = right_subarray[j];
-j++;
-k++;
-}
-free(left_subarray);
-free(right_subarray);
 }
 
 /**
- * merge_sort - merges and sorts two subarrays of array
+ * mergeSort - merges and sorts two subarrays of array
  * @array: An array
  * @size: The size of the array
+ * @cpy: Pointer to hold array copy
+ * @lb: lower bound of array
  *Return: void
+ */
+void mergeSort(int *cpy, int lb, size_t size, int *array)
+{
+int mid;
+
+if (size - lb < 2) /* Check if array has more than 1 element */
+return;
+mid = (size + lb) / 2;
+
+/* recursive calls to split and sort subarrays */
+mergeSort(array, lb, mid, cpy);
+mergeSort(array, mid, size, cpy);
+/* Merge the subarrays */
+merge(cpy, size, lb, mid, array);
+}
+
+/**
+ * copy_array - Makes a copy of given array
+ * @array: array given
+ * @cpy: Array output copy
+ * @size: Size of the array
+ * Return: void
+ */
+void copy_array(int *array, int *cpy, int size)
+{
+int i;
+
+for (i = 0; i < (int)size; i++)
+cpy[i] = array[i];
+}
+
+/**
+ * merge_sort - Makes subarrays, merge and them to sort
+ * @array: Array to sort
+ * @size: Size of the array
+ * Return: void
  */
 void merge_sort(int *array, size_t size)
 {
-size_t mid;
+int *cpy;
 
-if (size <= 1)
+cpy = malloc(sizeof(int) * size - 1);
+
+if (cpy == NULL)
 return;
-mid = size / 2;
-/* recursives calls to split and sort subarrays */
-merge_sort(array, mid);
-merge_sort(array + mid, size - mid);
-merge(array, 0, mid - 1, size - 1);
+copy_array(array, cpy, size);
+
+mergeSort(cpy, 0, size, array);
+free(cpy);
 }
